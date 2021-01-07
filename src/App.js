@@ -15,7 +15,7 @@ function App() {
 
   const getWeather = async(latitude, longitude) =>{
     const API_KEY = `0b69a70241383933c92b01ada01678c1`;
-    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
@@ -25,7 +25,7 @@ function App() {
   }
   const getWeatherCity = async(city) => {
     const API_KEY = `0b69a70241383933c92b01ada01678c1`;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     let response = await fetch(url);
     let data = await response.json();
     setCurrentWeather(data);
