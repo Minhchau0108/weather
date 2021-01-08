@@ -87,7 +87,7 @@ function App() {
                     <Button block onClick = {()=> handleGetWeatherCity('Vancouver')}>Vancouver</Button>
                 </ButtonGroup>
                 <Col>
-                  (<WeatherBox city = {currentWeather.name} temp = {currentWeather.main.temp} description ={currentWeather.weather[0].description} icon = {currentWeather.weather[0].icon}/>)
+                  <WeatherBox city = {currentWeather.name} temp = {currentWeather.main.temp} description ={currentWeather.weather[0].description} icon = {currentWeather.weather[0].icon}/>
                 </Col>
               </Row>   
           </Container>

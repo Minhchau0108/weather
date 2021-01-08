@@ -10,7 +10,7 @@ const WeatherBox = (props) => {
         boxShadow: '1px 2px 10px rgba(0, 0, 0, .2)',
         opacity: '0.9'
     }
-    let urlToImage = `http://openweathermap.org/img/wn/${props.icon}@2x.png`
+    let urlToImage = `https://openweathermap.org/img/wn/${props.icon}@2x.png`
     return (
         <div>
         <Card style={style} className="mx-auto m-5 py-5">
