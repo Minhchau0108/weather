@@ -9,7 +9,7 @@ import Error from './components/Error';
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
-  const [city, setCity] = useState('Ho Chi Minh City');
+  const [city, setCity] = useState('');
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const notInitialRender = useRef(false);
@@ -75,7 +75,7 @@ function App() {
       {loading? <PacmanLoader size={50}/> : ( 
         <>
         <PublicNavbar/>
-        <Container fluid className = {`image ${city === 'Ho Chi Minh City' ? "saigon" : city}`}> 
+        <Container fluid className = {`image ${city === '' || city === 'Ho Chi Minh City' ? "saigon" : city}`}> 
            <Row>
                 <ButtonGroup vertical size="lg" className="mb-2 box">
                     <Button block onClick = {()=> handleGetWeatherCity('Ho Chi Minh City')}>Saigon</Button>
