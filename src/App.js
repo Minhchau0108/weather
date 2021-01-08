@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect , useRef}  from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import PublicNavbar from './components/PublicNavbar';
@@ -12,6 +12,7 @@ function App() {
   const [city, setCity] = useState('Ho Chi Minh City');
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const notInitialRender = useRef(false);
 
   const getWeather = async(latitude, longitude) =>{
     const API_KEY = `0b69a70241383933c92b01ada01678c1`;
@@ -29,6 +30,7 @@ function App() {
     let response = await fetch(url);
     let data = await response.json();
     setCurrentWeather(data);
+    console.log('Get weather city is running');
   }
 
   useEffect(()=>{
@@ -51,7 +53,12 @@ function App() {
 
   useEffect(()=>{
     try{
-      getWeatherCity(city);
+      if(notInitialRender.current){
+        getWeatherCity(city);
+      }
+      else{
+        notInitialRender.current = true;
+      }
     }
     catch(e){
       setHasError(true);
@@ -80,7 +87,7 @@ function App() {
                     <Button block onClick = {()=> handleGetWeatherCity('Vancouver')}>Vancouver</Button>
                 </ButtonGroup>
                 <Col>
-                  { currentWeather === undefined ? null : (<WeatherBox city = {currentWeather.name} temp = {currentWeather.main.temp} description ={currentWeather.weather[0].description} icon = {currentWeather.weather[0].icon}/>)}
+                  (<WeatherBox city = {currentWeather.name} temp = {currentWeather.main.temp} description ={currentWeather.weather[0].description} icon = {currentWeather.weather[0].icon}/>)
                 </Col>
               </Row>   
           </Container>
